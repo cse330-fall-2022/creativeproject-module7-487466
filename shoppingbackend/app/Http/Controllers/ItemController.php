@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 
+
 class ItemController extends Controller
 {
     function addItem(Request $req) {
@@ -12,7 +13,8 @@ class ItemController extends Controller
         $item->description = $req->input('description');
         $item->price = $req->input('price');
         $item->image = $req->input('image');
-        $item->seller = $req->input('seller');
+        $item->seller_id = $req->input('seller_id');
+        $item->category = $req->input('category');
         $item->save();
         return $item;
     }
@@ -21,8 +23,8 @@ class ItemController extends Controller
         return Item::all();
     }
 
-    function delete($name) {
-        $result = Item::where('item', $name)->delete();
+    function delete($id) {
+        $result = Item::where('id', $id)->delete();
         if($result) {
             return ["result"=>"product has been deleted"];
         }
@@ -31,8 +33,30 @@ class ItemController extends Controller
         }
     }
 
-    function viewItem($name) {
-        return Item::find($name);
+    function viewItem($id) {
+        return Item::find($id);
     }
+
+    function updateItem($id, Request $req) {
+
+        $item = Item::find($id);
+
+       $item->item=$req->input('name');
+        $item->description=$req->input('description');
+        $item->price=$req->input('price');
+        $item->category = $req->input('category');
+        $item->image=$req->input('image');
+        $item->save();
+        return $item;
+        }
+        
+    function userItems($user_id) {
+        return Item::all()->where('seller_id', $user_id);
+    }
+
+    function filter($category) {
+        return Item::all()->where('category', $category);
+    }
+
 
 }

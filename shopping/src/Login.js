@@ -8,7 +8,7 @@ function Login() {
     const navigate = useNavigate();
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
-            navigate("/add");
+            navigate("/");
         }
     }, []);
     const [username, setUsername] = useState("")
@@ -16,7 +16,6 @@ function Login() {
     async function login() {
         //alert(username + " " + password);
         let item = { username, password };
-        console.warn(item);
 
         let result = await fetch("http://localhost:8000/api/login", {
             method: 'POST',
@@ -27,14 +26,13 @@ function Login() {
             }
         })
         result = await result.json();
-        console.warn(result);
         if(result.username == "error") {
             alert("username or password incorrect");
             navigate("/login");
         }
         else{
             localStorage.setItem("user-info", JSON.stringify(result));
-            navigate("/viewitems");
+            navigate("/");
         }
 
     }

@@ -9,8 +9,9 @@ function Header() {
                     {
                         localStorage.getItem('user-info') ?
                             <>
-                                <Link to="/viewitems">View Items</Link>
+                                <Link to="/">View Items</Link>
                                 <Link to="/add">Add Item</Link>
+                                <Link to="/profile">User Profile</Link>
                                 <Link to="/logout">Logout</Link>
                             </> :
                             <>
@@ -23,7 +24,9 @@ function Header() {
                     {
                         localStorage.getItem('user-info') ?
                             <>
-                                Logged in as: {(JSON.parse(localStorage.getItem('user-info'))).username}
+                                Logged in as: {(JSON.parse(localStorage.getItem('user-info'))).username} <br />
+                                Account balance: ${(JSON.parse(localStorage.getItem('user-info'))).money}
+
                             </> :
                             <>
                             </>

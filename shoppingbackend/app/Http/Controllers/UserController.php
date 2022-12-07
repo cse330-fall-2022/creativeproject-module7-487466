@@ -23,8 +23,16 @@ class UserController extends Controller
         return $user;
     }
 
-    function updateUserItems(Request $req) {
-        $user = User::where('username', $req->username)->first();
-        
+    function addMoney($id, Request $req) {
+        $user = User::find($id);
+        $user->money = $req->input('amount');
+        $user->save();
+        return $user;
     }
+
+    function getBalance($id) {
+        $user = User::find($id);
+        return $user;
+    }
+
 }

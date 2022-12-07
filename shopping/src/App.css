@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-.navbar_format a{
+.navbar_format a {
   margin-left: 30px;
 }
 
@@ -25,6 +25,44 @@
 .register_button {
   padding-left: 50px;
   padding-top: 10px;
+}
+
+.view_image {
+  padding: 20px;
+}
+
+.purchase {
+  margin-top: 30px;
+}
+
+.add_money {
+  width: 300px;
+  border: 5px solid;
+  padding: 10px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add_money_button {
+  margin-top: 30px;
+}
+
+.comment_section {
+  text-align: left;
+  padding: 20px;
+}
+ 
+.comments {
+  padding: 10px;
+}
+
+.your_items {
+  margin-top: 20px;
+}
+
+.filter_buttons {
+  margin-left: 30px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -52,6 +90,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
